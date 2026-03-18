@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IMDb Sentiment Analyzer</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <main class="page-shell">
+    <section class="hero-card">
+      <p class="eyebrow">Movie Review Intelligence</p>
+      <h1>IMDb Sentiment Analyzer</h1>
+      <p class="subtitle">
+        Paste a movie review and get an instant positive or negative sentiment prediction from your trained model.
+      </p>
+
+      <form id="sentiment-form" class="sentiment-form">
+        <label for="review" class="label">Your review</label>
+        <textarea
+          id="review"
+          name="review"
+          rows="8"
+          placeholder="Example: This movie had brilliant acting and a satisfying ending."
+          required
+        ></textarea>
+
+        <div class="actions">
+          <button id="analyze-button" type="submit">Analyze Sentiment</button>
+          <button id="clear-button" type="button" class="secondary">Clear</button>
+        </div>
+      </form>
+
+      <section id="result-card" class="result-card hidden" aria-live="polite">
+        <p class="result-label">Prediction</p>
+        <h2 id="sentiment-text">Waiting for input</h2>
+        <p id="sentiment-description" class="result-description"></p>
+      </section>
+
+      <p id="status-message" class="status-message"></p>
+    </section>
+  </main>
+
+  <script src="/static/app.js" defer></script>
+</body>
+</html>

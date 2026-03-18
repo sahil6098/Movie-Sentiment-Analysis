@@ -1,129 +1,82 @@
+# IMDb Sentiment Analysis
 
-# IMDb Sentiment Analysis Web App
+This project is a movie-review sentiment analysis web app built with:
 
-This project is a Natural Language Processing (NLP) based sentiment analysis application that predicts whether a movie review is **Positive** or **Negative**.
+- FastAPI for the backend API
+- a static HTML/CSS/JavaScript frontend
+- a Hugging Face sentiment model: `distilbert-base-uncased-finetuned-sst-2-english`
 
-The model is trained on movie review data and uses **TF-IDF vectorization** with **Logistic Regression** to classify text sentiment.
+## Project Structure
 
-A simple **Streamlit web interface** allows users to enter a movie review and instantly see the predicted sentiment.
+- `backend/app.py` runs the FastAPI server and prediction API
+- `backend/requirements.txt` contains backend dependencies
+- `frontend/` contains the user interface
+- `start.bat` starts the project with the local virtual environment
 
----
+## Setup
 
-## Features
+Open VS Code terminal at:
 
-- NLP text preprocessing
-- TF-IDF feature extraction
-- Logistic Regression classifier
-- Hyperparameter tuning
-- Interactive Streamlit web interface
-- Real-time sentiment prediction
+```powershell
+cd "PROJECT FOLDER"
+```
 
----
+If needed, activate the virtual environment:
 
-## Tech Stack
+```powershell
+.\venv\Scripts\Activate.ps1
+```
 
-- Python
-- Scikit-learn
-- Pandas
-- Streamlit
-- Natural Language Processing (NLP)
+If PowerShell blocks activation, run:
 
----
+```powershell
+Set-ExecutionPolicy -Scope Process Bypass
+```
 
-## Model Pipeline
+Install the backend dependencies:
 
-Review Text  
-↓  
-Text Cleaning  
-↓  
-Stopword Removal & Lemmatization  
-↓  
-TF-IDF Vectorization  
-↓  
-Logistic Regression Model  
-↓  
-Sentiment Prediction
+```powershell
+pip install -r .\backend\requirements.txt
+```
 
----
+## Run The Project
 
-## Example
+Option 1:
 
-Input:
-"This movie was absolutely amazing!"
+```powershell
+python .\backend\app.py
+```
 
-Output:
-Positive 😊
+Option 2:
 
----
+```powershell
+python -m uvicorn backend.app:app --reload
+```
 
-## Run the Application
+Option 3:
 
-Install dependencies:
+```powershell
+.\start.bat
+```
 
-```bash
-pip install -r requirements.txt
-=======
-# IMDb Sentiment Analysis Web App
+Then open:
 
-This project is a Natural Language Processing (NLP) based sentiment analysis application that predicts whether a movie review is **Positive** or **Negative**.
+```text
+http://127.0.0.1:8000/
+```
 
-The model is trained on movie review data and uses **TF-IDF vectorization** with **Logistic Regression** to classify text sentiment.
+## API Endpoints
 
-A simple **Streamlit web interface** allows users to enter a movie review and instantly see the predicted sentiment.
+- `GET /` serves the frontend
+- `GET /health` returns backend status
+- `POST /api/predict` predicts sentiment from the submitted review
 
----
+## Notes
 
-## Features
+- The first prediction can take longer because the Hugging Face model is loaded on first use.
+- If port `8000` is already in use, stop the old process or run on another port:
 
-- NLP text preprocessing
-- TF-IDF feature extraction
-- Logistic Regression classifier
-- Hyperparameter tuning
-- Interactive Streamlit web interface
-- Real-time sentiment prediction
-
----
-
-## Tech Stack
-
-- Python
-- Scikit-learn
-- Pandas
-- Streamlit
-- Natural Language Processing (NLP)
-
----
-
-## Model Pipeline
-
-Review Text  
-↓  
-Text Cleaning  
-↓  
-Stopword Removal & Lemmatization  
-↓  
-TF-IDF Vectorization  
-↓  
-Logistic Regression Model  
-↓  
-Sentiment Prediction
-
----
-
-## Example
-
-Input:
-"This movie was absolutely amazing!"
-
-Output:
-Positive 😊
-
----
-
-## Run the Application
-
-Install dependencies:
-
-```bash
-pip install -r requirements.txt
-
+```powershell
+$env:PORT="8001"
+python .\backend\app.py
+```
