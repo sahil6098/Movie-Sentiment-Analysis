@@ -73,7 +73,7 @@ This is a transformer-based sentiment analysis model available through Hugging F
 Open VS Code terminal in the project folder:
 
 ```powershell
-cd "F:\Sahil\SentimentAnalysis"
+cd "PROJECT FOLDER"
 ```
 
 If needed, activate the virtual environment:
