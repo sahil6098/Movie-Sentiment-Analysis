@@ -161,5 +161,3 @@ python .\backend\app.py
 - Show confidence score in the frontend
 - Add sentiment history
 - Add batch prediction support
-- Deploy the app to Render, Railway, or Hugging Face Spaces
-- Add tests for API endpoints and prediction flow
